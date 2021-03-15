@@ -6,26 +6,24 @@ function getRnd (min,max){
 }
 
 
-function getDifferentNumbers (arrayTot,array,tot){
+function getDifferentNumbers (totLength){
   var arrayTot = [];
   var array = [];
-  while (array.length < tot){
-    var index = arrayTot.indexOf(getRnd(1,100));
+  var index = arrayTot.indexOf(getRnd(1,20));
+
+  while (array.length < totLength){
     if(arrayTot.length<1){
-      arrayTot.push(getRnd(1,100));
+      arrayTot.push(getRnd(1,20));
     } else {
-      arrayTot.push(getRnd(1,100));
+      arrayTot.push(getRnd(1,20));
       if (index == -1){
-        array.push(getRnd(1,100))
+        array.push(getRnd(1,20))
       }
     }
   }
   return array;
 }
 
-// var randomNumber = getRnd(1,100);
-// console.log(randomNumber);
-var bombsTot = [];
-var bombs = [];
-var bombsOk = getDifferentNumbers(bombsTot,bombs,16);
-console.log(bombsOk);
+
+var bombs = getDifferentNumbers(16);
+console.log(bombs);
