@@ -45,8 +45,32 @@ function howManyShots(min,max,myArray){
 }
 
 
+do{
+  var levelSelect = prompt("Seleziona livello tra facile, medio , difficile");
+  var level = levelSelect.toLowerCase();
+  console.log(level);
+  if (level !== "facile" && level !== "medio" && level !== "difficile"){
+    alert("seleziona livello");
+  }
+} while (level !== "facile" && level !== "medio" && level !== "difficile");
 
-var bombs = getRndDifferentNumbers(1,100,16);
-console.log("numeri delle mine: ",bombs);
-var howManyBombs = howManyShots(0,100,bombs);
-console.log("colpi scoppiati ",howManyBombs);
+
+
+  if (level == "facile"){
+  var bombs = getRndDifferentNumbers(1,100,16);
+  console.log("numeri delle mine: ",bombs);
+  var howManyBombs = howManyShots(0,100,bombs);
+  console.log("colpi scoppiati ",howManyBombs);
+} else if (level == "medio"){
+  var bombs = getRndDifferentNumbers(1,80,16);
+  console.log("numeri delle mine: ",bombs);
+  var howManyBombs = howManyShots(0,80,bombs);
+  console.log("colpi scoppiati ",howManyBombs);
+} else if (levelSelect == "difficile"){
+  var bombs = getRndDifferentNumbers(1,50,16);
+  console.log("numeri delle mine: ",bombs);
+  var howManyBombs = howManyShots(0,50,bombs);
+  console.log("colpi scoppiati ",howManyBombs);
+} else {
+  alert("seleziona un livello valido");
+}
