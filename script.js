@@ -2,22 +2,21 @@ function getRndDifferentNumbers (min,max, totLength){
 
   var arrayTot = [];
   var array = [];
-  while (array.length < totLength){
+
+  do{
 
     var minRnd = min;
     var maxRnd = max - minRnd + 1;
     var numRnd = Math.floor(Math.random()*maxRnd)+minRnd;
     var index = arrayTot.indexOf(numRnd);
+    arrayTot.push(numRnd);
 
-    if(arrayTot.length<1){
-      arrayTot.push(numRnd);
-    } else {
-      arrayTot.push(numRnd);
-      if (index == -1){
+    if (index == -1){
         array.push(numRnd)
       }
-    }
-  }
+
+  }  while (array.length < totLength)
+
   return array;
 
 }
