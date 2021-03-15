@@ -44,7 +44,9 @@ function howManyShots(min,max,myArray){
 
 }
 
-var bombs = getRndDifferentNumbers(1,10,5);
+
+
+var bombs = getRndDifferentNumbers(1,100,16);
 console.log("numeri delle mine: ",bombs);
-var howManyBombs = howManyShots(0,10,bombs);
+var howManyBombs = howManyShots(0,100,bombs);
 console.log("colpi scoppiati ",howManyBombs);
