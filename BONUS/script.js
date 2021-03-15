@@ -1,3 +1,4 @@
+// funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
 function getRndDifferentNumbers (min,max, totLength){
 
   var arrayTot = [];
@@ -15,13 +16,14 @@ function getRndDifferentNumbers (min,max, totLength){
         array.push(numRnd)
       }
 
-  }  while (array.length < totLength)
+  }  while(array.length < totLength);
 
   return array;
 
 }
 
 
+// funzione per chiedere numeri tra min e max, confrontarli con numeri presenti in un myArray, inserendo quelli non presenti in un array vuoto e fermandosi dopo aver trovato un doppione. Ottengo la quantità di numeri estratti prima del doppione.
 function howManyShots(min,max,myArray){
 
   var usedNumbers = [];
@@ -30,7 +32,7 @@ function howManyShots(min,max,myArray){
 
     var userNumber = parseInt(prompt("dammi un numero"));
 
-    if (Number.isNaN(userNumber) || userNumber <= min || userNumber > max){
+    if (Number.isNaN(userNumber) || userNumber < min || userNumber > max){
       alert ("numero non valido, dimmene un altro");
     } else if (usedNumbers.indexOf(userNumber) >= 0){
       alert ("numero già usato, dimmene un altro");
@@ -50,7 +52,7 @@ do{
   var level = levelSelect.toLowerCase();
   console.log(level);
   if (level !== "facile" && level !== "medio" && level !== "difficile"){
-    alert("seleziona livello");
+    alert("seleziona livello corretto tra facile , medio , difficile");
   }
 } while (level !== "facile" && level !== "medio" && level !== "difficile");
 
@@ -58,19 +60,16 @@ do{
 
   if (level == "facile"){
   var bombs = getRndDifferentNumbers(1,100,16);
-  console.log("numeri delle mine: ",bombs);
-  var howManyBombs = howManyShots(0,100,bombs);
+  var howManyBombs = howManyShots(1,100,bombs);
   console.log("colpi scoppiati ",howManyBombs);
 } else if (level == "medio"){
   var bombs = getRndDifferentNumbers(1,80,16);
   console.log("numeri delle mine: ",bombs);
-  var howManyBombs = howManyShots(0,80,bombs);
+  var howManyBombs = howManyShots(1,80,bombs);
   console.log("colpi scoppiati ",howManyBombs);
 } else if (levelSelect == "difficile"){
   var bombs = getRndDifferentNumbers(1,50,16);
   console.log("numeri delle mine: ",bombs);
-  var howManyBombs = howManyShots(0,50,bombs);
+  var howManyBombs = howManyShots(1,50,bombs);
   console.log("colpi scoppiati ",howManyBombs);
-} else {
-  alert("seleziona un livello valido");
 }
