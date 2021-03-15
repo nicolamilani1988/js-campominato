@@ -22,6 +22,27 @@ function getRndDifferentNumbers (min,max, totLength){
 
 }
 
-
-var bombs = getRndDifferentNumbers(1,100,16);
+var bombs = getRndDifferentNumbers(1,10,5);
 console.log(bombs);
+
+  var usedNumbers = [];
+
+  do{
+
+    var userNumber = parseInt(prompt("dammi un numero"));
+    var inputType = typeof userNumber;
+    if (userNumber = "Nan" || userNumber <= 0 || userNumber > 100){
+      alert ("numero non valido, dimmene un altro");
+    } else if (usedNumbers.indexOf(userNumber) >= 0){
+      alert ("numero già usato, dimmene un altro");
+    } else {
+      usedNumbers.push(userNumber);
+      console.log(userNumber);
+    }
+  } while (bombs.indexOf(userNumber) < 0)
+
+  console.log(inputType);
+
+
+  console.log(usedNumbers, usedNumbers.length);
+  console.log("Hai perso e sei esploso dopo aver scoppiato la bomba numero " , usedNumbers.length);
