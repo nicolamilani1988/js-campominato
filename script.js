@@ -21,8 +21,8 @@ function getRndDifferentNumbers (min,max, totLength){
 
 }
 
-var bombs = getRndDifferentNumbers(1,10,5);
-console.log(bombs);
+
+function howManyShots(min,max,myArray){
 
   var usedNumbers = [];
 
@@ -30,16 +30,21 @@ console.log(bombs);
 
     var userNumber = parseInt(prompt("dammi un numero"));
 
-    if (Number.isNaN(userNumber) || userNumber <= 0 || userNumber > 100){
+    if (Number.isNaN(userNumber) || userNumber <= min || userNumber > max){
       alert ("numero non valido, dimmene un altro");
     } else if (usedNumbers.indexOf(userNumber) >= 0){
       alert ("numero già usato, dimmene un altro");
     } else {
       usedNumbers.push(userNumber);
-      console.log(userNumber);
+      // console.log(userNumber);
     }
-  } while (bombs.indexOf(userNumber) < 0)
+  } while (myArray.indexOf(userNumber) < 0)
 
+  return (usedNumbers.length);
 
-  console.log(usedNumbers, usedNumbers.length);
-  console.log("Hai perso e sei esploso dopo aver scoppiato la bomba numero " , usedNumbers.length);
+}
+
+var bombs = getRndDifferentNumbers(1,10,5);
+console.log("numeri delle mine: ",bombs);
+var howManyBombs = howManyShots(0,10,bombs);
+console.log("colpi scoppiati ",howManyBombs);
