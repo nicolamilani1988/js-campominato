@@ -30,8 +30,8 @@ console.log(bombs);
   do{
 
     var userNumber = parseInt(prompt("dammi un numero"));
-    var inputType = typeof userNumber;
-    if (userNumber = "Nan" || userNumber <= 0 || userNumber > 100){
+
+    if (Number.isNaN(userNumber) || userNumber <= 0 || userNumber > 100){
       alert ("numero non valido, dimmene un altro");
     } else if (usedNumbers.indexOf(userNumber) >= 0){
       alert ("numero già usato, dimmene un altro");
@@ -40,8 +40,6 @@ console.log(bombs);
       console.log(userNumber);
     }
   } while (bombs.indexOf(userNumber) < 0)
-
-  console.log(inputType);
 
 
   console.log(usedNumbers, usedNumbers.length);
