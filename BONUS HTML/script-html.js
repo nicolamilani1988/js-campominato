@@ -23,15 +23,15 @@ function getRndDifferentNumbers (min,max, totLength){
 }
 
 // creazione celle campo minato
-function createCell (){
+function createCell (max){
   var cella = document.getElementById("griglia");
-  for(var i=0;i<100;i++){
+  for(var i=0;i<max;i++){
     cella.innerHTML += '<li class="cell"><input id="cell-'+(i+1)+'" class="number" type="checkbox" name = "" data-numb="'+ (i+1) + '"><span class="cifra">'+(i+1)+'</span></li>';
 }
 }
 
 
-createCell();
+createCell(100);
 var bombs = getRndDifferentNumbers(1,100,16);
 console.log("numeri delle mine: ",bombs);
 
