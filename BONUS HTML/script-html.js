@@ -44,11 +44,23 @@ function Shoot(){
 
     li.addEventListener("click",function(){
 
-      var shotMade = parseInt(this.children[0].dataset.numb);
+      var checkedLi = this;
+
+      var shotMade = parseInt(checkedLi.children[0].dataset.numb);
       console.log(shotMade);
-      shots.push(shotMade);
+
       console.log("numeri delle mine: ",bombs);
       console.log("Colpi usati: ",shots);
+      var shotsNumber = shots.length;
+      console.log("colpi sparati ",shotsNumber);
+      if(shots.includes(shotMade)){
+        alert("Numero già inserito")
+      } else if(!bombs.includes(shotMade)){
+        shots.push(shotMade);
+      } else {
+        checkedLi.style.color = "red";
+        alert("SEI SCOPPIATO DOPO AVER SPARATO " + (shotsNumber+1) + " BOMBE");
+      }
 
     })
 
