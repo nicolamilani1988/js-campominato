@@ -1,5 +1,5 @@
-// funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
-function getRndDifferentNumbers (min,max, totLength){
+// FUNZIONE per comporre array di lunghezza totLength con numeri compresi tra min e max
+  function getRndDifferentNumbers (min,max, totLength){
 
   var arrayTot = [];
   var array = [];
@@ -22,66 +22,65 @@ function getRndDifferentNumbers (min,max, totLength){
 
 }
 
-// creazione celle campo minato
-function createCell (max){
-  var cella = document.getElementById("griglia");
-  for(var i=0;i<max;i++){
-    cella.innerHTML += '<li class="cell"><input id="cell-'+(i+1)+'" class="number" type="checkbox" name = "" data-numb="'+ (i+1) + '"><span class="cifra">'+(i+1)+'</span></li>';
-}
-}
-
-do{
-  var levelSelect = prompt("Seleziona livello tra facile, medio , difficile");
-  var level = levelSelect.toLowerCase();
-
-  if (level !== "facile" && level !== "medio" && level !== "difficile"){
-    alert("seleziona livello corretto tra facile , medio , difficile");
+// FUNZIONE creazione celle campo minato
+  function createCell (max){
+    var cella = document.getElementById("griglia");
+    for(var i=0;i<max;i++){
+      cella.innerHTML += '<li class="cell" data-numb="'+ (i+1) + '"><span class="cifra">'+(i+1)+'</span></li>';
+    }
   }
-} while (level !== "facile" && level !== "medio" && level !== "difficile");
-
-if(level == "facile"){
-  createCell(100);
-  var bombs = getRndDifferentNumbers(1,100,16);
-  console.log("numeri delle mine: ",bombs);
-} else if (level == "medio"){
-  createCell(80);
-  var bombs = getRndDifferentNumbers(1,80,16);
-  console.log("numeri delle mine: ",bombs);
-} else {
-  createCell(50);
-  var bombs = getRndDifferentNumbers(1,50,16);
-}
 
 
+  // Richiesta livello e creazione campo da gioco
+  do{
+    var levelSelect = prompt("Seleziona livello tra facile, medio , difficile");
+    var level = levelSelect.toLowerCase();
+
+    if (level !== "facile" && level !== "medio" && level !== "difficile"){
+      alert("seleziona livello corretto tra facile , medio , difficile");
+    }
+  } while (level !== "facile" && level !== "medio" && level !== "difficile");
+
+  if(level == "facile"){
+    createCell(100);
+    var bombs = getRndDifferentNumbers(1,100,16);
+    console.log("numeri delle mine: ",bombs);
+  } else if (level == "medio"){
+    createCell(80);
+    var bombs = getRndDifferentNumbers(1,80,16);
+    console.log("numeri delle mine: ",bombs);
+  } else {
+    createCell(50);
+    var bombs = getRndDifferentNumbers(1,50,16);
+    console.log("numeri delle mine: ",bombs);
+  }
 
 
-// Svolgimento esercizio
+  // Svolgimento gioco
   var shots = [];
-  var lis = document.getElementsByTagName("li");
-  for(var i=0;i<lis.length;i++){
-    var li = lis[i];
+  var myCells = document.getElementsByTagName("li");
+  for(var i=0;i<myCells.length;i++){
+    var myCell = myCells[i];
 
-    li.addEventListener("click",function(){
+    myCell.addEventListener("click",function(){
 
-      var checkedLi = this;
+      var selectedCell = this;
 
-      var shotMade = parseInt(checkedLi.children[0].dataset.numb);
-      console.log(shotMade);
+      var selectedNum = parseInt(selectedCell.dataset.numb);
 
-      console.log("numeri delle mine: ",bombs);
-      console.log("Colpi usati: ",shots);
-      var shotsNumber = shots.length;
+      var shotsNumber = (shots.length)+1;
       console.log("colpi sparati ",shotsNumber);
-      if(shots.includes(shotMade)){
-        alert("Numero già inserito")
-      } else if(!bombs.includes(shotMade)){
-        shots.push(shotMade);
+      if(shots.includes(selectedNum)){
+        alert("Non fare il furbo, inserisci un altro numero")
+      } else if(!bombs.includes(selectedNum)){
+        shots.push(selectedNum);
+        selectedCell.style.backgroundColor = "green";
+        console.log("Colpi usati: ",shots);
       } else {
-        checkedLi.style.color = "red";
-        alert("SEI SCOPPIATO DOPO AVER SPARATO " + (shotsNumber+1) + " BOMBE");
+        selectedCell.style.backgroundColor = "red";
+        alert("SEI SCOPPIATO DOPO AVER SPARATO " + (shotsNumber) + " BOMBE");
       }
 
     })
-
 
   }
