@@ -30,10 +30,29 @@ function createCell (max){
 }
 }
 
+do{
+  var levelSelect = prompt("Seleziona livello tra facile, medio , difficile");
+  var level = levelSelect.toLowerCase();
 
-createCell(100);
-var bombs = getRndDifferentNumbers(1,100,16);
-console.log("numeri delle mine: ",bombs);
+  if (level !== "facile" && level !== "medio" && level !== "difficile"){
+    alert("seleziona livello corretto tra facile , medio , difficile");
+  }
+} while (level !== "facile" && level !== "medio" && level !== "difficile");
+
+if(level == "facile"){
+  createCell(100);
+  var bombs = getRndDifferentNumbers(1,100,16);
+  console.log("numeri delle mine: ",bombs);
+} else if (level == "medio"){
+  createCell(80);
+  var bombs = getRndDifferentNumbers(1,80,16);
+  console.log("numeri delle mine: ",bombs);
+} else {
+  createCell(50);
+  var bombs = getRndDifferentNumbers(1,50,16);
+}
+
+
 
 
 // Svolgimento esercizio
