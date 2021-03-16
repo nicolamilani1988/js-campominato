@@ -1,22 +1,28 @@
-// var cella = document.getElementById("griglia");
+// creazione celle campo minato
+function createCell (){
+  var cella = document.getElementById("griglia");
+  for(var i=0;i<100;i++){
+    cella.innerHTML += '<li class="cell">' + (i+1) + ' <div class="layover"><input id="cell-'+(i+1)+'" class="number" type="checkbox" name="" data-numb='+ (i+1) + '><span class="cifra">'+(i+1)+'</span></div></li>';
+}
+}
+
+// function selectBomb (cellNum){
+//   myBtn.addEventListener("click", function getBomb(){
+//       var myBtn = selectBomb(i+1);
+//        console.log(myBtn.dataset.numb);
+//   })
+//   var cellNum = myBtn.checked;
+//   return cellNum;
+//   }
 //
-// for(var i=0;i<100;i++){
-//   cella.innerHTML += '<div class="cell" id="cell-'+(i+1)+'">'+(i+1)+'</div>';
+//   var myCell = document.getElementById("cell-"+cellNum);
+//   return myCell;
 // }
 
-var myBtn = document.getElementById("cell-1");
+createCell();
 
-myBtn.addEventListener("click", function(){
+var myBtn = document.getElementById("cell-"+ 1);
+myBtn.addEventListener("click", function getBomb(){
 
-
-  var myCells = document.getElementsByClassName("number");
-  for(var i=0;i<myCells.length;i++){
-    var myCell = myCells [i];
-    var isChecked = myCell.checked;
-    
-    if (isChecked){
-      var selectedBomb = parseInt(myCell.dataset.numb);
-      console.log(selectedBomb);
-    }
-  }
+     console.log(myBtn.dataset.numb);
 })

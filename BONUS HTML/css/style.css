@@ -5,8 +5,8 @@
 }
 
 .container {
-  width: 1000px;
-  height: 1000px;
+  width: 800px;
+  height: 800px;
   border: 2px solid black;
   margin: auto;
 }
@@ -25,15 +25,14 @@
   position: relative;
   list-style-type: none;
   background-color: red;
-
 }
 
 .number{
   font-size: 20px;
   font-weight: bolder;
   text-align: center;
-  line-height: 100px;
-  height: 100px;
+  line-height: 80px;
+  height: 80px;
   width: 100%;
 }
 
