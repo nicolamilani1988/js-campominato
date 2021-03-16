@@ -1,3 +1,27 @@
+// funzione per comporre array di lunghezza totLength con numeri compresi tra min e max
+function getRndDifferentNumbers (min,max, totLength){
+
+  var arrayTot = [];
+  var array = [];
+
+  do{
+
+    var minRnd = min;
+    var maxRnd = max - minRnd + 1;
+    var numRnd = Math.floor(Math.random()*maxRnd)+minRnd;
+    var index = arrayTot.indexOf(numRnd);
+    arrayTot.push(numRnd);
+
+    if (index == -1){
+        array.push(numRnd)
+      }
+
+  }  while (array.length < totLength)
+
+  return array;
+
+}
+
 // creazione celle campo minato
 function createCell (){
   var cella = document.getElementById("griglia");
@@ -8,22 +32,29 @@ function createCell (){
 
 
 createCell();
+var bombs = getRndDifferentNumbers(1,100,16);
+console.log("numeri delle mine: ",bombs);
 
 // funzione per associare input utente a un numero preciso.
-function getBomb(){
+function Shoot(){
+  var shots = [];
   var lis = document.getElementsByTagName("li");
   for(var i=0;i<lis.length;i++){
     var li = lis[i];
 
-
     li.addEventListener("click",function(){
 
-      var selectedBomb = parseInt(this.children[0].dataset.numb);
-      console.log(selectedBomb);
+      var shotMade = parseInt(this.children[0].dataset.numb);
+      console.log(shotMade);
+      shots.push(shotMade);
+      console.log("numeri delle mine: ",bombs);
+      console.log("Colpi usati: ",shots);
 
     })
 
+
   }
+
 }
 
-getBomb();
+Shoot();
