@@ -23,14 +23,21 @@ function getRndDifferentNumbers (min,max, totLength){
 }
 
 
-// funzione per chiedere numeri tra min e max, confrontarli con numeri presenti in un myArray, inserendo quelli non presenti in un array vuoto e fermandosi dopo aver trovato un doppione. Ottengo la quantità di numeri estratti prima del doppione.
+
+// funzione per chiedere all'utente numeri tra min e max
+function askNumber(min,max){
+  var res = parseInt(prompt("Dimmi un numero tra "+min+" e "+max));
+  return res;
+}
+
+// Funzione confronto numeri tra min e max con numeri presenti in un myArray esterno, inserendo quelli non presenti in un array vuoto e fermandosi dopo aver trovato un doppione. Ottengo la quantità di numeri estratti prima del doppione.
 function howManyShots(min,max,myArray){
 
   var usedNumbers = [];
 
   do{
 
-    var userNumber = parseInt(prompt("dammi un numero"));
+    var userNumber = askNumber(min,max);
 
     if (Number.isNaN(userNumber) || userNumber < min || userNumber > max){
       alert ("numero non valido, dimmene un altro");
@@ -46,7 +53,7 @@ function howManyShots(min,max,myArray){
 
 }
 
-
+// esecuzione esercizio
 do{
   var levelSelect = prompt("Seleziona livello tra facile, medio , difficile");
   var level = levelSelect.toLowerCase();
