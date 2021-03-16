@@ -35,8 +35,8 @@ createCell(100);
 var bombs = getRndDifferentNumbers(1,100,16);
 console.log("numeri delle mine: ",bombs);
 
-// funzione per associare input utente a un numero preciso.
-function Shoot(){
+
+// Svolgimento esercizio
   var shots = [];
   var lis = document.getElementsByTagName("li");
   for(var i=0;i<lis.length;i++){
@@ -66,7 +66,3 @@ function Shoot(){
 
 
   }
-
-}
-
-Shoot();
